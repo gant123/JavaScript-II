@@ -56,28 +56,45 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+runners.forEach(value => fullName.push(`${value.first_name} ${value.last_name}`));
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+runners.map(value => allCaps.push(value.first_name.toUpperCase()));
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+largeShirts = runners.filter(value => {return value.shirt_size === "L"});
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
+ticketPriceTotal = runners.reduce((reducer, value) => {
+  return (reducer += value.donation);
+}, 0);
 console.log(ticketPriceTotal);
-
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: Get Average donation
+let total = runners.reduce((reducer, item) => {
+  return (reducer += item.donation);
+}, 0);
+let avg = total / runners.length;
+console.log(`Average donation: ${avg}`);
 
-// Problem 2
+// Problem 2: Get list of everyshirt size that is Large and above
+let extraShirts = [];
+extraShirts = runners.filter(value => {return value.shirt_size === "L" || value.shirt_size === "XL" || value.shirt_size === "2XL" || value.shirt_size === "3XL" || value.shirt_size === "4XL"});
+console.log(extraShirts);
 
-// Problem 3
+// Problem 3 list of top donors over 289
+const topDonors = runners.filter(value => {
+  return value.donation > 289;
+});
+console.log(topDonors);
