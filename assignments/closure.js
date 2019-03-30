@@ -1,6 +1,14 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
+speak = () => {
+  let name = "Robert";
 
+  sayName = () => {
+    console.log("Hello, my name is  " + name);
+  }
+  sayName();
+}
+speak();
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
